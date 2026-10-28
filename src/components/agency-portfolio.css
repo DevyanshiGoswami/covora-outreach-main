@@ -1,0 +1,90 @@
+.agency-portal { min-height: 100dvh; background: var(--bg); color: var(--fg); }
+.agency-nav { position: fixed; inset: 0 auto 0 0; width: 236px; background: var(--card); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 30px 20px 22px; }
+.agency-brand { display: flex; gap: 11px; align-items: center; padding: 0 8px; font-size: 24px; font-weight: 650; letter-spacing: -1px; }
+.agency-brand .covora-logo { width: 38px; height: 38px; object-fit: contain; border-radius: 10px; background: #000; }
+.agency-nav-label { color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: 1.4px; margin: 48px 10px 15px; }
+.agency-nav nav a { display: flex; align-items: center; gap: 12px; padding: 13px 14px; color: var(--muted); border-radius: 10px; font-weight: 600; }
+.agency-nav nav a > span { margin-left: auto; font-size: 12px; }
+.agency-nav-bottom { margin-top: auto; }
+.agency-private { display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--border); padding: 22px 8px; color: var(--muted); }
+.agency-private p { color: var(--fg); font-size: 12px; font-weight: 600; }
+.agency-private small { display: block; color: var(--muted); font-weight: 400; margin-top: 3px; font-size: 11px; }
+.agency-session { display: flex; justify-content: space-between; gap: 12px; }
+.agency-session form button { display: flex; align-items: center; gap: 8px; border-color: transparent; color: var(--muted); background: transparent; min-height: 44px; }
+.agency-body { margin-left: 236px; }
+.agency-topbar { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border); background: var(--card); padding: 23px 40px; font-size: 12px; color: var(--muted); }
+.agency-topbar > span { display: flex; gap: 10px; align-items: center; }
+.agency-topbar strong { color: var(--fg); font-weight: 500; }
+.agency-main { max-width: 1480px; padding: 42px 40px 24px; margin: auto; }
+.agency-title { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.agency-eyebrow { color: var(--blue); font-size: 10px; font-weight: 650; letter-spacing: 1.8px; }
+.agency-title h1 { font-size: clamp(28px, 3vw, 38px); margin: 12px 0 10px; letter-spacing: -1.4px; }
+.agency-title p, .agency-directory-heading p { color: var(--muted); font-size: 13px; }
+.agency-refresh { display: flex; align-items: center; gap: 8px; padding: 11px 15px; white-space: nowrap; background: var(--card); min-height: 44px; border-radius: 9px; }
+.agency-summary { display: grid; grid-template-columns: repeat(3, 1fr); margin: 30px 0 38px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 0; }
+.agency-summary > div { display: flex; align-items: flex-start; gap: 12px; padding: 0 26px; }
+.agency-summary > div + div { border-left: 1px solid var(--border); }
+.agency-summary svg { color: var(--blue); margin-top: 2px; }
+.agency-summary span { color: var(--muted); font-size: 12px; }
+.agency-summary strong { display: block; color: var(--fg); font-size: 28px; font-weight: 600; line-height: 1.3; margin-top: 7px; }
+.agency-directory-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+.agency-directory-heading h2 { font-size: 18px; margin-bottom: 6px; }
+.agency-search { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: 9px; padding: 0 12px; background: var(--card); color: var(--muted); min-width: 240px; }
+.agency-search input { border: 0; background: transparent; width: 100%; padding-left: 0; min-height: 44px; font-size: 13px; }
+.agency-client-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.agency-client-card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; overflow: hidden; padding: 24px 24px 0; box-shadow: var(--shadow); }
+.agency-client-card.agency-tab-loading { padding: 24px; min-height: 96px; display: flex; align-items: center; color: var(--muted); }
+.agency-card-heading { display: flex; gap: 13px; align-items: center; min-width: 0; }
+.agency-avatar { width: 42px; height: 42px; border: 1px solid var(--border); color: var(--blue); background: var(--blue-soft); display: grid; place-items: center; border-radius: 11px; font-size: 13px; font-weight: 650; flex-shrink: 0; }
+.agency-card-heading h2 { font-size: 17px; overflow-wrap: anywhere; }
+.agency-card-heading p { color: var(--muted); font-size: 11px; margin-top: 3px; }
+.agency-mode { margin-left: auto; border-radius: 5px; padding: 4px 8px; color: var(--green); background: var(--green-soft); font-size: 10px; font-weight: 600; white-space: nowrap; }
+.agency-mode.is-preview { color: var(--muted); background: var(--bg); }
+.agency-client-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 23px 0 13px; }
+.agency-client-metrics span { color: var(--muted); display: flex; align-items: center; gap: 6px; font-size: 11px; }
+.agency-client-metrics strong { display: block; margin-top: 8px; font-weight: 600; font-size: 25px; overflow-wrap: anywhere; }
+.agency-client-metrics small { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; }
+.agency-sync-note { color: var(--muted); font-size: 10px; min-height: 30px; margin-bottom: 13px; }
+.agency-preview-description { display: flex; gap: 12px; color: var(--muted); min-height: 125px; align-items: center; padding: 21px 0; }
+.agency-preview-description svg { flex-shrink: 0; color: var(--blue); }
+.agency-preview-description strong { color: var(--fg); font-weight: 500; font-size: 13px; }
+.agency-preview-description p { font-size: 12px; margin-top: 5px; max-width: 380px; }
+.agency-client-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.agency-client-tools a { display: flex; align-items: center; gap: 6px; font-size: 11px; padding: 8px 9px; border: 1px solid var(--border); border-radius: 7px; min-height: 38px; }
+.agency-client-tools a:hover { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+.agency-card-footer { display: flex; gap: 12px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding: 15px 0; }
+.agency-card-footer a { display: flex; align-items: center; gap: 6px; font-size: 12px; min-height: 40px; }
+.agency-card-footer > a:first-child { color: var(--muted); }
+.agency-card-footer a.agency-open-client { background: var(--blue); color: var(--card); padding: 9px 12px; border-radius: 7px; font-weight: 550; }
+.agency-footer { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 10px; margin-top: 35px; }
+.agency-no-results { text-align: center; padding: 50px 24px; border: 1px solid var(--border); background: var(--card); border-radius: 14px; color: var(--muted); }
+.agency-no-results h2 { color: var(--fg); margin: 12px 0 7px; }
+.agency-no-results button { margin-top: 18px; }
+.agency-spinning { animation: agency-spin 1s linear infinite; }
+@keyframes agency-spin { to { transform: rotate(360deg); } }
+@media (max-width: 1150px) { .agency-nav { width: 208px; } .agency-body { margin-left: 208px; } .agency-main { padding: 30px 24px 22px; } .agency-topbar { padding: 20px 24px; } .agency-client-grid { grid-template-columns: 1fr; } .agency-title { align-items: flex-start; } .agency-directory-heading { flex-wrap: wrap; } }
+@media (max-width: 680px) { .agency-nav { position: static; width: auto; padding: 18px; flex-direction: row; align-items: center; gap: 20px; border-right: 0; border-bottom: 1px solid var(--border); } .agency-brand { font-size: 20px; padding: 0; } .agency-brand .covora-logo { width: 32px; height: 32px; } .agency-nav-label, .agency-nav nav, .agency-private { display: none; } .agency-nav-bottom { margin: 0 0 0 auto; } .agency-session { gap: 5px; } .agency-session form button { font-size: 11px; padding: 8px; } .agency-body { margin-left: 0; } .agency-topbar { padding: 15px 18px; font-size: 10px; } .agency-main { padding: 27px 18px 20px; } .agency-title { display: block; } .agency-title p { font-size: 12px; } .agency-refresh { margin-top: 18px; } .agency-summary { margin: 24px 0 28px; padding: 17px 0; } .agency-summary > div { display: block; padding: 0 13px; } .agency-summary svg { margin-bottom: 8px; } .agency-summary span { display: block; font-size: 10px; } .agency-summary strong { font-size: 25px; } .agency-search { width: 100%; } .agency-directory-heading { gap: 16px; } .agency-directory-heading p { font-size: 12px; } .agency-client-card { padding: 18px 16px 0; } .agency-card-heading { gap: 10px; flex-wrap: wrap; } .agency-card-heading h2 { font-size: 16px; } .agency-mode { font-size: 9px; } .agency-client-metrics strong { font-size: 24px; } .agency-client-tools a { min-height: 42px; } .agency-footer { flex-direction: column; gap: 5px; font-size: 9px; } }
+@media (prefers-reduced-motion: reduce) { .agency-spinning { animation: none; } }
+
+.agency-owners { display: grid; gap: 24px; }
+.agency-owners .agency-client-card { padding-bottom: 24px; }
+.agency-owners .agency-card-footer { flex-wrap: wrap; gap: 12px; }
+.agency-owners .agency-card-footer > div { min-width: 0; overflow-wrap: anywhere; }
+.agency-owners .settings-field input { width: 100%; min-width: 0; }
+
+.agency-nav nav a[aria-current="page"] { color: var(--blue); background: var(--blue-soft); }
+.agency-owners form.login-form { display: grid; gap: 14px; margin-top: 16px; }
+.agency-owners form.login-form button { justify-self: start; }
+.agency-nav nav { display: grid; gap: 8px; }
+.agency-nav nav a:not([aria-current="page"]) { background: transparent; color: var(--muted); }
+.agency-tabs { margin-top: 20px; }
+.agency-integrations { display: grid; gap: 20px; }
+.integration-card { align-self: start; }
+.integration-description { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 20px 0; }
+.integration-empty { margin-bottom: 20px; }
+.integration-row { border-top: 1px solid var(--border); padding: 20px 0; display: grid; gap: 14px; }
+.integration-row-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; }
+.integration-row-heading strong { font-size: 14px; overflow-wrap: anywhere; }
+.integration-note { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.integration-note svg { flex-shrink: 0; margin-top: 2px; }
+@media (max-width: 680px) { .agency-nav nav { display: none; } .agency-tabs { display: block; } }

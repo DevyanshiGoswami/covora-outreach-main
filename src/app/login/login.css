@@ -1,0 +1,69 @@
+.portal-login {
+  min-height: 100svh;
+  padding: 32px 48px 24px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+.portal-login-header, .portal-login-footer {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.portal-login-header .brand { margin: 0; font-size: 21px; letter-spacing: -.6px; }
+.portal-login-header .covora-logo { width: 42px; height: 42px; border-radius: 10px; }
+.portal-login-header-end { display: flex; align-items: center; gap: 20px; color: var(--muted); font-size: 13px; }
+.portal-login-header .icon-button { min-width: 44px; min-height: 44px; }
+.portal-login-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 450px);
+  align-items: center;
+  gap: clamp(48px, 8vw, 120px);
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+  padding-block: 72px;
+}
+.portal-login-label { color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: 1.7px; }
+.portal-login-intro h2 { font-size: clamp(38px, 4.4vw, 60px); line-height: 1.1; letter-spacing: -2.6px; font-weight: 550; margin: 24px 0; }
+.portal-login-intro h2 span { color: var(--blue); }
+.portal-login-intro > p { color: var(--muted); font-size: 16px; line-height: 1.8; max-width: 365px; margin: 0; }
+.portal-login-benefits { display: grid; gap: 22px; list-style: none; padding: 0; margin: 38px 0 52px; }
+.portal-login-benefits li { display: flex; align-items: center; gap: 14px; font-size: 14px; }
+.portal-login-benefits svg { flex-shrink: 0; color: var(--blue); }
+.portal-login-private { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 12px; }
+.portal-login-card { padding: 44px 40px 32px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 20px 70px #17243808; }
+.portal-login-card h1 { font-size: 32px; line-height: 1.2; font-weight: 550; letter-spacing: -1.1px; margin: 18px 0 10px; }
+.portal-login-description { margin: 0 0 32px; color: var(--muted); font-size: 14px; }
+.portal-login-card .form-field { margin: 0 0 22px; font-size: 13px; font-weight: 550; }
+.portal-login-card .form-field input { min-height: 50px; border-radius: 9px; font-size: 16px; font-weight: 400; padding: 12px 14px; }
+.portal-login-card input::placeholder { color: var(--muted); opacity: .85; }
+.portal-login-card .login-password-field { position: relative; }
+.portal-login-card .login-password-field input { padding-right: 52px; }
+.portal-login-card .login-password-toggle { position: absolute; top: 3px; right: 3px; min-width: 44px; height: 44px; display: grid; place-items: center; border: 0; padding: 0; background: transparent; color: var(--muted); }
+.portal-login-card .login-password-toggle:hover { background: var(--blue-soft); color: var(--blue); }
+.portal-login-card .primary { min-height: 50px; border-radius: 9px; margin-top: 6px; font-size: 14px; gap: 10px; }
+.portal-login-card .notice { font-size: 13px; line-height: 1.6; }
+.portal-login-card .login-error { margin: 0 0 18px; }
+.portal-login-help { border-top: 1px solid var(--border); padding-top: 24px; margin: 28px 0 0; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.portal-login-footer { font-size: 12px; color: var(--muted); }
+.portal-login-footer a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; }
+.portal-login-footer a:hover { color: var(--blue); }
+@media (max-width: 850px) {
+  .portal-login { padding: 24px; }
+  .portal-login-layout { grid-template-columns: minmax(0, 450px); justify-content: center; padding-block: 48px; gap: 0; }
+  .portal-login-intro { display: none; }
+}
+@media (max-width: 480px) {
+  .portal-login { padding: 20px 16px 16px; }
+  .portal-login-header-end { gap: 8px; }
+  .portal-login-header-end > span { display: none; }
+  .portal-login-layout { padding-block: 36px; }
+  .portal-login-card { padding: 32px 24px 24px; border-radius: 16px; }
+  .portal-login-card h1 { font-size: 29px; }
+  .portal-login-footer { flex-direction: column; gap: 2px; text-align: center; }
+}
