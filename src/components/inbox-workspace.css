@@ -643,6 +643,8 @@
 
 /* New outreach: a compact entry point, not a separate email tab. */
 .inbox-board-workspace .inbox-toolbar .new-outreach-button { flex: 0 0 auto; min-height: 44px; border-radius: 999px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px; }
+.settings-field .outreach-field-error { color: var(--fg); font-weight: 500; }
+.settings-field [aria-invalid="true"] { border-color: var(--fg); }
 .outreach-recent { border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
 .outreach-recent h3 { font-size: 0.9rem; margin: 0 0 8px; }
 .outreach-recent ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }

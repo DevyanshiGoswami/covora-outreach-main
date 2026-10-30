@@ -9,14 +9,35 @@ export type Outreach = {
   id: string; clientId: string; status: OutreachStatus; recipientEmail: string; recipientName: string;
   senderAddress: string; subject: string; createdAt: string; updatedAt: string; conversationId: string | null;
 };
-export type OutreachInput = { clientId: string; sendId: string; leadId: string; connectionId: string; subject: string; bodyText: string };
+export type OutreachInput = { clientId: string; sendId: string; recipientEmail: string; connectionId: string; subject: string; bodyText: string };
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const text = (value: unknown, max: number): value is string => typeof value === "string" && value.length <= max;
 const id = (value: unknown): value is string => typeof value === "string" && UUID.test(value);
 const time = (value: unknown): value is string => typeof value === "string" && Number.isFinite(Date.parse(value));
 
 export function outreachStatusLabel(status: OutreachStatus): string {
-  return { queued: "Starting", creating: "Starting", scheduled: "Scheduled to send", sent: "Sent", failed: "Not sent", unknown: "Outcome unconfirmed" }[status];
+  return { queued: "Starting", creating: "Starting", scheduled: "Queued for sending", sent: "Sent", failed: "Not sent", unknown: "Outcome unconfirmed, do not resend" }[status];
+}
+
+/** Only a confirmed failure invites another attempt; an unknown outcome may already have been delivered. */
+export function outreachOutcomeNotice(item: Pick<Outreach, "status" | "recipientEmail">): string {
+  if (item.status === "failed") return "The outreach was not sent. Check the sender connection and try again.";
+  if (item.status === "unknown") return `${outreachStatusLabel(item.status)}: ${item.recipientEmail}. It may still be delivered, so use Refresh status instead of starting again.`;
+  return `${outreachStatusLabel(item.status)}: ${item.recipientEmail}. Replies appear in the Inbox.`;
+}
+
+export type OutreachFormErrors = Partial<Record<"recipientEmail" | "subject" | "bodyText", string>>;
+export function outreachFormErrors(form: { recipientEmail: string; subject: string; bodyText: string }): OutreachFormErrors {
+  const errors: OutreachFormErrors = {};
+  const email = form.recipientEmail.trim();
+  if (!email) errors.recipientEmail = "Enter the recipient's email address.";
+  else if (email.length > 254 || !EMAIL.test(email)) errors.recipientEmail = "Enter a valid email address, like name@company.com.";
+  if (!form.subject.trim()) errors.subject = "Enter a subject.";
+  else if (/[\r\n]/.test(form.subject)) errors.subject = "Keep the subject on one line.";
+  if (!form.bodyText.trim()) errors.bodyText = "Write a message.";
+  else if ([...form.bodyText.trim()].length > 4000) errors.bodyText = "Keep the message within 4,000 characters.";
+  return errors;
 }
 
 export function validOutreachInput(value: unknown): OutreachInput | null {
@@ -24,9 +45,10 @@ export function validOutreachInput(value: unknown): OutreachInput | null {
   const input = value as Record<string, unknown>;
   const subject = typeof input.subject === "string" ? input.subject.trim() : "";
   const bodyText = typeof input.bodyText === "string" ? input.bodyText.trim() : "";
-  if (!id(input.clientId) || !id(input.sendId) || !id(input.leadId) || !id(input.connectionId)
+  const recipientEmail = typeof input.recipientEmail === "string" ? input.recipientEmail.trim().toLowerCase() : "";
+  if (!id(input.clientId) || !id(input.sendId) || !id(input.connectionId) || recipientEmail.length > 254 || !EMAIL.test(recipientEmail)
     || !subject || subject.length > 500 || /[\r\n]/.test(subject) || !bodyText || [...bodyText].length > 4000) return null;
-  return { clientId: input.clientId, sendId: input.sendId, leadId: input.leadId, connectionId: input.connectionId, subject, bodyText };
+  return { clientId: input.clientId, sendId: input.sendId, recipientEmail, connectionId: input.connectionId, subject, bodyText };
 }
 
 function outreachItem(value: unknown, clientId: string): Outreach {
