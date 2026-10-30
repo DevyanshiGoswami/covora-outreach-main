@@ -35,7 +35,7 @@ export async function startOutreach(raw: unknown) {
   let dispatched = false;
   try {
     const input = validOutreachInput(raw);
-    if (!input) return { error: "Choose a prospect and sender, and write a subject and a message within 4,000 characters.", uncertain: false };
+    if (!input) return { error: "Enter a valid recipient email, choose a sender, and write a subject and a message within 4,000 characters.", uncertain: false };
     await authorize(input.clientId);
     dispatched = true;
     return { data: outreachFromResponse(await callOutreachApi({ kind: "start", body: input }), input.clientId, input.sendId) };

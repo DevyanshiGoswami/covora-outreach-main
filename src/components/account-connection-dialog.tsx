@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, useTransition } from "react";
 import { ArrowLeft, Check, CheckCircle2, ExternalLink, Eye, EyeOff, Mail, Network } from "lucide-react";
 import { connectPerson, cancelLinkedinSignIn } from "@/app/settings/onboarding-actions";
 import { openSignInWindow, finishSignInWindow } from "@/lib/sign-in-window";
-import { CONNECTION_LABELS, canStartEmailConnection, isPersonalGmail, consentProviderName, type EmailProvider, type OutreachPerson, type ConnectionChannel, type OnboardingActionState } from "@/lib/onboarding";
+import { CONNECTION_LABELS, canStartEmailConnection, consentProviderName, type EmailProvider, type OutreachPerson, type ConnectionChannel, type OnboardingActionState } from "@/lib/onboarding";
 import { SettingsDialog, useSettingsAction } from "./settings-dialog";
 import { EmailProviderLogo, EmailProviderPicker } from "./email-provider-picker";
 import { linkedinProgress, needsLinkedinCode, type VerificationReceipt } from "@/lib/linkedin-verification";
@@ -153,8 +153,7 @@ function PersonConnectionForm({ clientId, person, channel, configured, onClose }
   const status = channel === "linkedin" && active ? progress.badge
     : inFlight ? isStarting ? channel === "email" ? "Opening sign-in…" : "Connecting…" : "Checking…" : connected ? "Connected" : !configured ? "Not enabled"
       : state ? CONNECTION_LABELS[state] : "Not connected";
-  const personalEmail = isPersonalGmail(mailbox);
-  const showProviderPicker = channel === "email" && configured && person.canConnect && !connected && !removing && !personalEmail
+  const showProviderPicker = channel === "email" && configured && person.canConnect && !connected && !removing
     && ((!active && !uncertain) || (choosingProvider && canContinue));
   const previousSignIn = active || uncertain;
   const chooseAnotherProvider = () => {
