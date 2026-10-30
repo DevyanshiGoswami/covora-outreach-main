@@ -115,14 +115,13 @@ export function consentProviderName(url: string): "Google" | "Microsoft" {
 export type EmailProvider = "google" | "microsoft";
 export type EmailProviderChoice = EmailProvider | "personal" | "other";
 export const EMAIL_PROVIDERS: { value: EmailProviderChoice; label: string; description: string }[] = [
-  { value: "google", label: "Google Workspace", description: "Your company email, hosted by Google" },
+  { value: "google", label: "Google", description: "Personal Gmail or company email hosted by Google" },
   { value: "microsoft", label: "Microsoft", description: "Microsoft 365, Outlook or Hotmail" },
-  { value: "personal", label: "Personal Gmail", description: "An address ending in @gmail.com" },
   { value: "other", label: "Another provider", description: "An email service other than Google or Microsoft" },
 ];
 export function isPersonalGmail(email: string): boolean { return /@(gmail|googlemail)\.com$/i.test(email.trim()); }
-export function canStartEmailConnection(provider: EmailProviderChoice | null, email: string): provider is EmailProvider {
-  return (provider === "google" || provider === "microsoft") && !isPersonalGmail(email);
+export function canStartEmailConnection(provider: EmailProviderChoice | null, _email: string): provider is EmailProvider {
+  return provider === "google" || provider === "microsoft";
 }
 export type ConnectionOperation = { action: "start" | "switch" | "poll" | "pin" | "review"; provider?: EmailProvider; method?: "cookies" };
 /** Email start buttons name their provider ("start-google", "start-microsoft"); a bare "start" keeps the service default. */

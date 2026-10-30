@@ -134,14 +134,14 @@ test("review deadlines are validated and shown only while waiting for consent ex
   assert.doesNotMatch(connectionReviewMessage('waiting'), /up to 10 minutes/);
 });
 
-test("email provider choices never send personal Gmail or unsupported providers to OAuth", () => {
+test("email provider choices send Google and Microsoft mailboxes, including personal Gmail, to OAuth", () => {
   assert.equal(isPersonalGmail(" Person@GMAIL.COM "), true);
   assert.equal(isPersonalGmail("person@googlemail.com"), true);
   assert.equal(isPersonalGmail("person@gmail.com.example.test"), false);
   for (const provider of [null, "personal", "other"] as const) assert.equal(canStartEmailConnection(provider, "person@company.test"), false);
   for (const provider of ["google", "microsoft"] as const) {
     assert.equal(canStartEmailConnection(provider, "person@company.test"), true);
-    assert.equal(canStartEmailConnection(provider, "person@gmail.com"), false);
+    assert.equal(canStartEmailConnection(provider, "person@gmail.com"), true);
   }
   assert.throws(() => connectionOperation("pin", "email"));
   assert.match(connectionFailureMessage("personal_gmail_unsupported")!, /not available here yet/);
